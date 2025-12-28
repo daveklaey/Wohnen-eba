@@ -1,0 +1,479 @@
+/* ================================
+   MODUL 2 SPEZIFISCHES CSS
+   ================================ */
+
+/* Video Container */
+.video-container {
+    margin: var(--spacing-xl) 0;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    background: #000;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Video Overlay (für Pausen) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.video-overlay.active {
+    display: flex;
+}
+
+.overlay-content {
+    text-align: center;
+    color: var(--white);
+    padding: var(--spacing-xl);
+}
+
+.overlay-content h3 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.overlay-content p {
+    font-size: 1.2rem;
+}
+
+/* Video Controls */
+.video-controls {
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.video-progress {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.progress-bar-video {
+    flex: 1;
+    height: 8px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill-video {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+
+#videoTime {
+    font-size: 0.9rem;
+    color: var(--gray);
+    min-width: 100px;
+}
+
+/* Verständnisfragen Container */
+.questions-container {
+    background: var(--light-gray);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.questions-container h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.question-intro {
+    color: var(--gray);
+    margin-bottom: var(--spacing-lg);
+}
+
+#questionContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.video-question {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.video-question h4 {
+    color: var(--dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.video-question .radio-card {
+    margin-bottom: var(--spacing-xs);
+}
+
+.video-question .feedback {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.video-question .feedback.correct {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.video-question .feedback.wrong {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ================================
+   GLOSSAR
+   ================================ */
+
+.glossary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.glossary-item {
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.glossary-item:hover {
+    border-color: var(--primary-color);
+}
+
+.glossary-term {
+    padding: var(--spacing-md);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--light-gray);
+    transition: background 0.2s;
+}
+
+.glossary-term:hover {
+    background: #e2e8f0;
+}
+
+.glossary-term h4 {
+    margin: 0;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: transform 0.3s;
+}
+
+.glossary-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+.glossary-definition {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.glossary-item.active .glossary-definition {
+    padding: var(--spacing-md);
+    max-height: 500px;
+}
+
+.glossary-definition p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--dark);
+}
+
+.glossary-definition p:last-child {
+    margin-bottom: 0;
+}
+
+.glossary-definition strong {
+    color: var(--primary-color);
+}
+
+/* ================================
+   PLATTFORM-LINKS
+   ================================ */
+
+.platform-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.platform-card {
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+}
+
+.platform-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.platform-card h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.platform-card p {
+    color: var(--gray);
+    margin: 0;
+}
+
+/* ================================
+   WOHNUNGSFORMULAR
+   ================================ */
+
+.apartment-form {
+    background: var(--light-gray);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* ================================
+   WOHNUNGS-ZUSAMMENFASSUNG
+   ================================ */
+
+.apartment-summary {
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.apartment-summary h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: var(--spacing-sm);
+}
+
+.summary-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.summary-section h4 {
+    color: var(--dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.summary-detail {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.summary-detail:last-child {
+    border-bottom: none;
+}
+
+.summary-detail .label {
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.summary-detail .value {
+    color: var(--dark);
+}
+
+.summary-costs {
+    background: var(--light-gray);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.summary-costs .cost-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) 0;
+}
+
+.summary-costs .cost-row.total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding-top: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    border-top: 2px solid var(--dark);
+}
+
+.summary-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.pros-list,
+.cons-list {
+    background: var(--light-gray);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+}
+
+.pros-list h4 {
+    color: var(--secondary-color);
+}
+
+.cons-list h4 {
+    color: #ef4444;
+}
+
+.pros-list ul,
+.cons-list ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-sm) 0 0 0;
+}
+
+.pros-list li::before {
+    content: "✓ ";
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-right: var(--spacing-xs);
+}
+
+.cons-list li::before {
+    content: "✗ ";
+    color: #ef4444;
+    font-weight: 700;
+    margin-right: var(--spacing-xs);
+}
+
+.summary-lists li {
+    padding: var(--spacing-xs) 0;
+    color: var(--dark);
+}
+
+/* ================================
+   ALERT INFO
+   ================================ */
+
+.alert-info {
+    background: #dbeafe;
+    border-left: 4px solid var(--primary-color);
+}
+
+.alert-info h3 {
+    color: #1e40af;
+}
+
+.alert-info ul {
+    margin: var(--spacing-sm) 0 0 var(--spacing-lg);
+    color: var(--dark);
+}
+
+.alert-info li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-detail {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+    
+    .summary-lists {
+        grid-template-columns: 1fr;
+    }
+    
+    .platform-links {
+        grid-template-columns: 1fr;
+    }
+}
