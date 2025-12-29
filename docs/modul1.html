@@ -416,55 +416,63 @@
                 <p id="deficitMessage" style="color: #78350f; margin: 0;"><!-- Wird dynamisch gefüllt --></p>
             </div>
 
-                <div class="leandro-says">
-                    <div class="avatar-small">L</div>
-                    <div class="speech-bubble">
-                        <p>Ups... so geht das nicht! Ich muss irgendwo sparen, sonst habe ich am Ende des Monats Schulden. Was kann ich ändern?</p>
-                    </div></div>
+            <div class="leandro-bubble">
+                <div class="avatar-creative">L</div>
+                <div class="speech-bubble-creative">
+                    <p>Ups... so geht das nicht! Ich muss irgendwo sparen, sonst habe ich am Ende des Monats Schulden. Was kann ich ändern?</p>
                 </div>
+            </div>
 
-                <h2>Optimiere dein Budget</h2>
-                <p>Du hast mehrere Möglichkeiten, dein Budget ins Plus zu bringen:</p>
-
-                <div class="optimization-options">
-                    <div class="option-card">
-                        <h4>💡 Tipp 1: Variable Kosten senken</h4>
+            <div style="background: white; border-radius: 24px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);">
+                <h3 style="margin-bottom: 1.5rem;">💡 So kannst du sparen:</h3>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">🛒</div>
+                        <h4>Variable Kosten senken</h4>
                         <p>Gehe weniger oft in den Ausgang, kaufe weniger Kleider, oder koche öfter selbst.</p>
-                    </div></div>
-                    <div class="option-card">
-                        <h4>💡 Tipp 2: Günstigere Wohnung</h4>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">🏠</div>
+                        <h4>Günstigere Wohnung</h4>
                         <p>Statt CHF 1'400 eine Wohnung für CHF 1'200 suchen – spart CHF 200!</p>
-                    </div></div>
-                    <div class="option-card">
-                        <h4>💡 Tipp 3: Weniger sparen</h4>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">💎</div>
+                        <h4>Weniger sparen</h4>
                         <p>Für Notfälle brauchst du Rückstellungen – aber vielleicht kannst du die Ferien aufschieben?</p>
-                    </div></div>
+                    </div>
                 </div>
+            </div>
 
-                <h3>Passe dein Budget an:</h3>
-                <div id="optimizationZone">
-                    <!-- Wird dynamisch gefüllt mit anpassbaren Posten -->
+            <div style="background: white; border-radius: 24px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);">
+                <h3 style="margin-bottom: 1.5rem;">✏️ Passe dein Budget an:</h3>
+                <div id="optimizationZone" class="optimization-grid">
+                    <!-- Wird dynamisch gefüllt -->
                 </div>
+            </div>
 
-                <div class="budget-balance">
-                    <div class="balance-calculation">
-                        <div class="balance-row">
-                            <span>Einnahmen:</span>
-                            <span class="amount positive" id="opt-balance-income">CHF 0</span>
-                        </div></div>
-                        <div class="balance-row">
-                            <span>Ausgaben:</span>
-                            <span class="amount negative" id="opt-balance-expenses">CHF 0</span>
-                        </div></div>
-                        <hr>
-                        <div class="balance-row total">
-                            <span><strong>Neue Bilanz:</strong></span>
-                            <span class="amount" id="opt-balance-result">CHF 0</span>
-                        </div></div>
-                    </div></div>
+            <div class="balance-card-fancy">
+                <h3>📊 Neue Bilanz</h3>
+                <div class="balance-row-fancy">
+                    <span>Einnahmen:</span>
+                    <span class="amount-fancy positive" id="opt-balance-income">CHF 0</span>
                 </div>
+                <div class="balance-row-fancy">
+                    <span>Ausgaben:</span>
+                    <span class="amount-fancy negative" id="opt-balance-expenses">CHF 0</span>
+                </div>
+                <div class="balance-row-fancy total">
+                    <span><strong>Neue Bilanz:</strong></span>
+                    <span class="amount-fancy" id="opt-balance-result">CHF 0</span>
+                </div>
+            </div>
 
-                <button class="btn btn-primary btn-large" id="finalizeBtn" onclick="finalizeBudget()" disabled>Budget abschliessen ✓</button>
+            <div class="action-buttons">
+                <button class="btn-creative btn-primary-creative btn-large" id="finalizeBtn" onclick="finalizeBudget()" disabled>
+                    <span>Budget abschliessen</span>
+                    <span class="btn-arrow-creative">✓</span>
+                </button>
             </div>
         </section>
 
