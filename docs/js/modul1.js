@@ -290,7 +290,7 @@ function dragStart(e) {
 
 function dragEnd(e) {
     e.target.classList.remove('dragging');
-    document.querySelectorAll('.drop-zone').forEach(zone => {
+    document.querySelectorAll('.drop-zone-fancy').forEach(zone => {
         zone.classList.remove('drag-over');
     });
 }
@@ -324,7 +324,7 @@ function updateCategoryTotals() {
     
     categories.forEach(cat => {
         const zone = document.getElementById(`${cat}-zone`);
-        const items = zone.querySelectorAll('.budget-item');
+        const items = zone.querySelectorAll('.budget-item-fancy');
         let total = 0;
         
         items.forEach(item => {
@@ -366,7 +366,7 @@ function updateBalance() {
 
 function calculateCategoryTotal(category) {
     const zone = document.getElementById(`${category}-zone`);
-    const items = zone.querySelectorAll('.budget-item');
+    const items = zone.querySelectorAll('.budget-item-fancy');
     let total = 0;
     
     items.forEach(item => {
@@ -415,7 +415,7 @@ function prepareOptimization(deficit) {
     
     ['fixed', 'variable', 'savings'].forEach(cat => {
         const zoneElement = document.getElementById(`${cat}-zone`);
-        const items = zoneElement.querySelectorAll('.budget-item');
+        const items = zoneElement.querySelectorAll('.budget-item-fancy');
         
         items.forEach(item => {
             if (item.dataset.adjustable === 'true') {
