@@ -725,3 +725,18 @@
     max-height: calc(70vh - 100px);
     overflow-y: auto;
 }
+
+/* ================================
+   FINAL QUIZ GRID
+   ================================ */
+
+#finalQuiz {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+#finalQuiz .question-card {
+    margin-bottom: 0 !important;
+}
