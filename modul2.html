@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 2: Wo finde ich eine Wohnung?</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modul2.css">
+</head>
+<body>
+    <header class="header-creative">
+        <div class="container">
+            <div class="header-content">
+                <div class="module-badge">Modul 2</div>
+                <h1>Wo finde ich eine Wohnung?</h1>
+                <p class="subtitle">Die Wohnungssuche beginnt – aber Vorsicht vor Betrügern!</p>
+            </div>
+            <div class="header-illustration">
+                <div class="illustration-search">🏠</div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="index.html" class="back-link">← Zurück zur Übersicht</a>
+            <div class="progress-dots">
+                <span class="dot active" data-phase="1" title="Video"></span>
+                <span class="dot" data-phase="2" title="Quiz"></span>
+                <span class="dot" data-phase="3" title="Glossar"></span>
+                <span class="dot" data-phase="4" title="Wohnungssuche"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container creative-container">
+        <!-- PHASE 1: Video mit Notizen -->
+        <section id="phase1" class="phase active">
+            <div class="phase-header">
+                <div class="phase-icon">📺</div>
+                <div>
+                    <h2>Schritt 1: Video anschauen</h2>
+                    <p class="phase-description">Schaue dir das Video über Fake-Inserate an und mache dir Notizen</p>
+                </div>
+            </div>
+
+            <div class="leandro-bubble">
+                <div class="avatar-creative">L</div>
+                <div class="speech-bubble-creative">
+                    <p>Bevor wir mit der Suche starten: Dieses Video zeigt, wie Betrüger:innen vorgehen. Pass gut auf und mach dir Notizen!</p>
+                </div>
+            </div>
+
+            <div class="video-notes-grid">
+                <!-- Video links -->
+                <div class="video-card">
+                    <div class="card-header">
+                        <h3>🎬 Video: Fake-Inserate erkennen</h3>
+                        <div class="video-meta">
+                            <span class="meta-tag">⏱️ 17 Min</span>
+                            <span class="meta-tag">🗣️ DE</span>
+                        </div>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            id="videoPlayer"
+                            src="https://drive.google.com/file/d/1h9YHASinUAd7sBcEx4J-0_4S_a_N__ZX/preview" 
+                            width="100%" 
+                            height="100%" 
+                            allow="autoplay"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Notizen rechts -->
+                <div class="notes-card">
+                    <div class="card-header">
+                        <h3>📝 Deine Notizen</h3>
+                        <button class="btn-icon-download" onclick="downloadNotes()" title="Notizen als TXT herunterladen">
+                            <span>💾</span>
+                            <span class="btn-text">Speichern</span>
+                        </button>
+                    </div>
+                    
+                    <div class="notes-tips">
+                        <div class="tip-icon">💡</div>
+                        <div>
+                            <strong>Worauf achten?</strong>
+                            <ul>
+                                <li>Wie erkenne ich Fake-Inserate?</li>
+                                <li>Welche Warnsignale gibt es?</li>
+                                <li>Was sollte ich NICHT tun?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <textarea 
+                        id="videoNotes" 
+                        class="notes-textarea" 
+                        placeholder="Deine Notizen zum Video...
+
+📌 Was habe ich gelernt?
+• 
+• 
+• 
+
+⚠️ Wichtige Warnsignale:
+• 
+• 
+• 
+
+✅ Checkliste für sichere Wohnungssuche:
+• 
+• 
+• "
+                        oninput="saveNotesLocally()">
+                    </textarea>
+
+                    <div class="notes-footer">
+                        <span class="notes-count" id="notesCount">0 Zeichen</span>
+                        <span class="notes-saved" id="notesSaved">
+                            <span class="pulse-dot"></span>
+                            Auto-Speicherung aktiv
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-creative btn-primary-creative" onclick="showPhase(2)">
+                    <span>Video geschaut → Weiter zum Quiz</span>
+                    <span class="btn-arrow-creative">→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PHASE 2: Kahoot Quiz -->
+        <section id="phase2" class="phase">
+            <div class="phase-header">
+                <div class="phase-icon">🎮</div>
+                <div>
+                    <h2>Schritt 2: Quiz spielen</h2>
+                    <p class="phase-description">Teste dein Wissen über Fake-Inserate</p>
+                </div>
+            </div>
+
+            <div class="leandro-bubble">
+                <div class="avatar-creative">L</div>
+                <div class="speech-bubble-creative">
+                    <p>Jetzt wird's spannend! Mal schauen, was du dir gemerkt hast. Viel Erfolg beim Quiz!</p>
+                </div>
+            </div>
+
+            <div class="kahoot-card">
+                <div class="kahoot-header-fancy">
+                    <div class="kahoot-title">
+                        <span class="kahoot-icon">🏆</span>
+                        <h3>Kahoot: Fake-Inserate erkennen</h3>
+                    </div>
+                    <p>Beantworte die Fragen so schnell wie möglich – je schneller, desto mehr Punkte!</p>
+                </div>
+
+                <div class="kahoot-wrapper-fancy">
+                    <!-- HIER DEINEN KAHOOT-IFRAME EINFÜGEN -->
+                    <div class="kahoot-placeholder">
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon-large">🎯</div>
+                            <h4>Kahoot-Link hier einfügen</h4>
+                            <div class="instruction-steps">
+                                <div class="step">
+                                    <span class="step-number">1</span>
+                                    <p>Erstelle ein Kahoot auf <a href="https://kahoot.com" target="_blank">kahoot.com</a></p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">2</span>
+                                    <p>Klicke auf "Share" → "Challenge"</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">3</span>
+                                    <p>Kopiere den Link und füge ihn in <code>modul2.html</code> Zeile 168 ein</p>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <code>&lt;iframe src="DEIN_KAHOOT_LINK" width="100%" height="600px"&gt;&lt;/iframe&gt;</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- BEISPIEL - ERSETZE MIT DEINEM KAHOOT -->
+                    <!-- 
+                    <iframe 
+                        src="https://kahoot.it/challenge/..." 
+                        width="100%" 
+                        height="600px" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                    -->
+                </div>
+
+                <div class="quiz-info-grid">
+                    <div class="info-card-fancy">
+                        <span class="info-emoji">💡</span>
+                        <strong>Tipp</strong>
+                        <p>Lies die Fragen genau!</p>
+                    </div>
+                    <div class="info-card-fancy">
+                        <span class="info-emoji">⏱️</span>
+                        <strong>Zeit</strong>
+                        <p>Denk schnell, aber richtig!</p>
+                    </div>
+                    <div class="info-card-fancy">
+                        <span class="info-emoji">🏅</span>
+                        <strong>Punkte</strong>
+                        <p>Schnelligkeit + Richtigkeit = Top-Score!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-creative btn-secondary-creative" onclick="showPhase(1)">
+                    <span class="btn-arrow-creative">←</span>
+                    <span>Zurück zum Video</span>
+                </button>
+                <button class="btn-creative btn-primary-creative" onclick="showPhase(3)">
+                    <span>Quiz gespielt → Weiter zum Glossar</span>
+                    <span class="btn-arrow-creative">→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PHASE 3: Glossar -->
+        <section id="phase3" class="phase">
+            <div class="phase-header">
+                <div class="phase-icon">📚</div>
+                <div>
+                    <h2>Schritt 3: Inserate verstehen</h2>
+                    <p class="phase-description">Lerne die wichtigsten Begriffe kennen</p>
+                </div>
+            </div>
+
+            <div class="leandro-bubble">
+                <div class="avatar-creative">L</div>
+                <div class="speech-bubble-creative">
+                    <p>Was bedeutet eigentlich "3.5 Zimmer"? Und was heisst "Nebenkosten akonto"? Hier lernst du die wichtigsten Begriffe!</p>
+                </div>
+            </div>
+
+            <div class="glossary-grid">
+                <!-- Begriff 1 -->
+                <div class="glossary-card" onclick="toggleGlossaryCard(this)">
+                    <div class="glossary-front">
+                        <div class="card-icon">🏠</div>
+                        <h4>3.5 Zimmer</h4>
+                        <p class="card-hint">Klicken für Erklärung</p>
+                    </div>
+                    <div class="glossary-back">
+                        <h4>3.5 Zimmer</h4>
+                        <div class="definition">
+                            <p><strong>Was bedeutet das?</strong></p>
+                            <p>Die "halben" Zimmer sind meist Küchen oder Esszimmer. Eine 3.5-Zimmer-Wohnung hat zum Beispiel:</p>
+                            <ul>
+                                <li>Wohnzimmer</li>
+                                <li>2 Schlafzimmer</li>
+                                <li>Küche/Essbereich (= 0.5)</li>
+                            </ul>
+                            <p class="tip">💡 <strong>Tipp:</strong> Bad, WC und Flur zählen nicht als Zimmer!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begriff 2 -->
+                <div class="glossary-card" onclick="toggleGlossaryCard(this)">
+                    <div class="glossary-front">
+                        <div class="card-icon">💰</div>
+                        <h4>Nebenkosten akonto</h4>
+                        <p class="card-hint">Klicken für Erklärung</p>
+                    </div>
+                    <div class="glossary-back">
+                        <h4>Nebenkosten akonto</h4>
+                        <div class="definition">
+                            <p><strong>Was bedeutet das?</strong></p>
+                            <p>"Akonto" = Vorauszahlung. Du zahlst jeden Monat einen geschätzten Betrag für Heizung, Wasser, Hausunterhalt.</p>
+                            <p><strong>Beispiel:</strong></p>
+                            <p>Miete CHF 1'200 + NK akonto CHF 150 = <strong>CHF 1'350/Monat</strong></p>
+                            <p class="tip">⚠️ <strong>Wichtig:</strong> Am Jahresende wird abgerechnet. Zu viel bezahlt? → Geld zurück. Zu wenig? → Nachzahlen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begriff 3 -->
+                <div class="glossary-card" onclick="toggleGlossaryCard(this)">
+                    <div class="glossary-front">
+                        <div class="card-icon">📊</div>
+                        <h4>Brutto vs. Netto</h4>
+                        <p class="card-hint">Klicken für Erklärung</p>
+                    </div>
+                    <div class="glossary-back">
+                        <h4>Brutto- vs. Nettomiete</h4>
+                        <div class="definition">
+                            <p><strong>Nettomiete:</strong> Nur die Miete, ohne Nebenkosten</p>
+                            <p><strong>Bruttomiete:</strong> Miete + Nebenkosten zusammen</p>
+                            <p><strong>Beispiel:</strong></p>
+                            <ul>
+                                <li>Nettomiete: CHF 1'200</li>
+                                <li>+ Nebenkosten: CHF 150</li>
+                                <li>= Bruttomiete: CHF 1'350</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begriff 4 -->
+                <div class="glossary-card" onclick="toggleGlossaryCard(this)">
+                    <div class="glossary-front">
+                        <div class="card-icon">🔐</div>
+                        <h4>Kaution</h4>
+                        <p class="card-hint">Klicken für Erklärung</p>
+                    </div>
+                    <div class="glossary-back">
+                        <h4>Kaution / Mietzinsgarantie</h4>
+                        <div class="definition">
+                            <p><strong>Was ist das?</strong></p>
+                            <p>Eine Sicherheit für den Vermieter, falls du Schäden verursachst oder die Miete nicht bezahlst.</p>
+                            <p><strong>Höhe:</strong> Meist 2-3 Monatsmieten</p>
+                            <p>Beispiel: Bei CHF 1'200 Miete = CHF 2'400-3'600 Kaution</p>
+                            <p class="tip">💡 Die Kaution wird auf ein gesperrtes Konto eingezahlt. Du bekommst sie beim Auszug zurück!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begriff 5 -->
+                <div class="glossary-card" onclick="toggleGlossaryCard(this)">
+                    <div class="glossary-front">
+                        <div class="card-icon">📐</div>
+                        <h4>m² (Quadratmeter)</h4>
+                        <p class="card-hint">Klicken für Erklärung</p>
+                    </div>
+                    <div class="glossary-back">
+                        <h4>m² (Quadratmeter)</h4>
+                        <div class="definition">
+                            <p><strong>Was bedeutet das?</strong></p>
+                            <p>Die Grösse der Wohnung. Je mehr m², desto grösser die Wohnung.</p>
+                            <p><strong>Richtwerte:</strong></p>
+                            <ul>
+                                <li>1 Person: ca. 40-50 m²</li>
+                                <li>2 Personen: ca. 60-70 m²</li>
+                                <li>3.5-Zimmer: ca. 70-90 m²</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begriff 6 -->
+                <div class="glossary-card" onclick="toggleGlossaryCard(this)">
+                    <div class="glossary-front">
+                        <div class="card-icon">📅</div>
+                        <h4>Verfügbar ab</h4>
+                        <p class="card-hint">Klicken für Erklärung</p>
+                    </div>
+                    <div class="glossary-back">
+                        <h4>Verfügbar ab / Einzugsdatum</h4>
+                        <div class="definition">
+                            <p><strong>Was bedeutet das?</strong></p>
+                            <p>Ab wann du in die Wohnung einziehen kannst.</p>
+                            <p><strong>Varianten:</strong></p>
+                            <ul>
+                                <li>"Sofort" → Du kannst schnell einziehen</li>
+                                <li>"Nach Vereinbarung" → Flexibel</li>
+                                <li>Festes Datum → Erst ab diesem Tag</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-creative btn-secondary-creative" onclick="showPhase(2)">
+                    <span class="btn-arrow-creative">←</span>
+                    <span>Zurück zum Quiz</span>
+                </button>
+                <button class="btn-creative btn-primary-creative" onclick="showPhase(4)">
+                    <span>Begriffe gelernt → Wohnung suchen!</span>
+                    <span class="btn-arrow-creative">→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PHASE 4: Wohnungssuche -->
+        <section id="phase4" class="phase">
+            <div class="phase-header">
+                <div class="phase-icon">🔍</div>
+                <div>
+                    <h2>Schritt 4: Wohnung suchen & analysieren</h2>
+                    <p class="phase-description">Finde eine passende Wohnung und erstelle deine Analyse</p>
+                </div>
+            </div>
+
+            <div class="leandro-bubble">
+                <div class="avatar-creative">L</div>
+                <div class="speech-bubble-creative">
+                    <p>Jetzt geht's los! Suche eine Wohnung, die zu deinem Budget passt, und analysiere sie genau!</p>
+                </div>
+            </div>
+
+            <!-- Plattform-Links -->
+            <div class="platforms-section">
+                <h3>🌐 Wo suchen?</h3>
+                <div class="platform-grid">
+                    <a href="https://www.comparis.ch/immobilien/default" target="_blank" class="platform-card-fancy">
+                        <div class="platform-icon">🏠</div>
+                        <h4>Comparis</h4>
+                        <p>Grosse Auswahl an Miet- und Kaufobjekten</p>
+                        <span class="platform-link">Zur Plattform →</span>
+                    </a>
+                    <a href="https://www.homegate.ch" target="_blank" class="platform-card-fancy">
+                        <div class="platform-icon">🏡</div>
+                        <h4>Homegate</h4>
+                        <p>Beliebte Plattform mit vielen Inseraten</p>
+                        <span class="platform-link">Zur Plattform →</span>
+                    </a>
+                    <a href="https://www.immoscout24.ch" target="_blank" class="platform-card-fancy">
+                        <div class="platform-icon">🏘️</div>
+                        <h4>ImmoScout24</h4>
+                        <p>Schnelle Suche nach Kriterien</p>
+                        <span class="platform-link">Zur Plattform →</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Checkliste -->
+            <div class="checklist-card">
+                <div class="checklist-header">
+                    <h3>📋 Checkliste für die Wohnungssuche</h3>
+                </div>
+                <div class="checklist-grid">
+                    <div class="checklist-item">
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Budget</strong>
+                            <p>Max. 1/3 deines Einkommens</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Lage</strong>
+                            <p>Nähe zu Arbeit/Schule, ÖV</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Grösse</strong>
+                            <p>Wie viele Zimmer brauchst du?</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Nebenkosten</strong>
+                            <p>Im Preis enthalten?</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Kaution</strong>
+                            <p>Kannst du sie aufbringen?</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Fake-Check</strong>
+                            <p>Sieht das Inserat realistisch aus?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wohnungsformular -->
+            <div class="apartment-form-card">
+                <div class="form-header-fancy">
+                    <h3>📝 Deine Wohnungsanalyse</h3>
+                    <p>Fülle das Formular aus und lade deine Analyse als PDF herunter</p>
+                </div>
+
+                <form id="apartmentForm" class="form-fancy">
+                    <div class="form-section">
+                        <h4>🏠 Grunddaten</h4>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">🔗</span>
+                                    Link zum Inserat *
+                                </label>
+                                <input type="url" id="apartmentLink" placeholder="https://www.comparis.ch/..." required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">📍</span>
+                                    Adresse / Ort *
+                                </label>
+                                <input type="text" id="apartmentAddress" placeholder="z.B. Musterstrasse 10, 8001 Zürich" required>
+                            </div>
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">🚪</span>
+                                    Anzahl Zimmer *
+                                </label>
+                                <input type="text" id="apartmentRooms" placeholder="z.B. 2.5" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>💰 Kosten</h4>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">💵</span>
+                                    Miete (netto) *
+                                </label>
+                                <input type="number" id="apartmentRent" placeholder="z.B. 1200" required>
+                            </div>
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">💳</span>
+                                    Nebenkosten *
+                                </label>
+                                <input type="number" id="apartmentExtra" placeholder="z.B. 150" required>
+                            </div>
+                        </div>
+                        <div class="cost-preview" id="costPreview">
+                            <strong>Bruttomiete:</strong> <span id="totalCost">CHF 0</span>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>📏 Weitere Details</h4>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">📐</span>
+                                    Grösse (m²)
+                                </label>
+                                <input type="number" id="apartmentSize" placeholder="z.B. 65">
+                            </div>
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">📅</span>
+                                    Verfügbar ab
+                                </label>
+                                <input type="text" id="apartmentAvailable" placeholder="z.B. sofort, 01.04.2024">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>💭 Deine Analyse</h4>
+                        <div class="form-field full-width">
+                            <label>
+                                <span class="label-icon">❓</span>
+                                Warum passt diese Wohnung zu dir? *
+                            </label>
+                            <textarea id="apartmentWhy" rows="4" placeholder="z.B. Nähe zur Arbeit, gute ÖV-Anbindung, passt ins Budget..." required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">✅</span>
+                                    Vorteile (3-5 Punkte) *
+                                </label>
+                                <textarea id="apartmentPros" rows="6" placeholder="- Zentrale Lage&#10;- Balkon vorhanden&#10;- Günstige Miete&#10;- Helle Räume&#10;- Nahe ÖV" required></textarea>
+                            </div>
+                            <div class="form-field">
+                                <label>
+                                    <span class="label-icon">⚠️</span>
+                                    Nachteile (3-5 Punkte) *
+                                </label>
+                                <textarea id="apartmentCons" rows="6" placeholder="- Kleine Küche&#10;- Kein Lift&#10;- Laute Strasse&#10;- Alter Boden&#10;- Wenig Stauraum" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-creative btn-primary-creative btn-large">
+                            <span>💾 Speichern & PDF erstellen</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- PHASE 5: Zusammenfassung -->
+        <section id="phase5" class="phase">
+            <div class="phase-header">
+                <div class="phase-icon">✅</div>
+                <div>
+                    <h2>Geschafft!</h2>
+                    <p class="phase-description">Deine Wohnungsanalyse ist fertig</p>
+                </div>
+            </div>
+
+            <div class="success-banner">
+                <div class="success-icon">🎉</div>
+                <h3>Wohnung gespeichert!</h3>
+                <p>Du kannst deine Analyse jetzt als PDF herunterladen</p>
+            </div>
+
+            <div id="apartmentSummary" class="summary-card-fancy">
+                <!-- Wird dynamisch gefüllt -->
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-creative btn-primary-creative btn-large" onclick="downloadApartmentPDF()">
+                    <span>📄 Als PDF herunterladen</span>
+                </button>
+                <button class="btn-creative btn-secondary-creative" onclick="showPhase(4)">
+                    <span>🔄 Andere Wohnung suchen</span>
+                </button>
+                <button class="btn-creative btn-success-creative" onclick="completeModule()">
+                    <span>✓ Modul abschliessen</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 – Lernpfad "Meine erste Wohnung"</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/modul2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
