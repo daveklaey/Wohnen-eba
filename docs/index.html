@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine erste Wohnung – Lernpfad</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Meine erste Wohnung</h1>
+            <p class="subtitle">Ein Lernpfad mit Leandro</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section: Leandro vorstellen -->
+        <section class="hero">
+            <div class="leandro-intro">
+                <div class="leandro-avatar">
+                    <div class="avatar-circle">L</div>
+                </div>
+                <div class="leandro-text">
+                    <h2>Das ist Leandro</h2>
+                    <p>Leandro ist 18 Jahre alt und hat seine Lehre als Sanitärpraktiker EBA gerade abgeschlossen. Er verdient jetzt CHF 4'100 brutto pro Monat und träumt von seiner ersten eigenen Wohnung.</p>
+                    <p><strong>Begleite Leandro auf seinem Weg – von der Idee bis zum möglichen Auszug!</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fortschrittsanzeige -->
+        <section class="progress-section">
+            <h3>Dein Fortschritt</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <p class="progress-text"><span id="progressModules">0</span> von 5 Modulen abgeschlossen</p>
+        </section>
+
+        <!-- Module -->
+        <section class="modules">
+            <h3>Die 5 Module</h3>
+            
+            <div class="module-card" data-module="1">
+                <div class="module-number">1</div>
+                <div class="module-content">
+                    <h4>Kann ich mir das leisten?</h4>
+                    <p>Leandro rechnet nach: Reicht sein Lohn für eine eigene Wohnung?</p>
+                    <ul class="module-topics">
+                        <li>Budget und Faustregel</li>
+                        <li>Fixe vs. variable Kosten</li>
+                        <li>Was kostet Wohnen wirklich?</li>
+                    </ul>
+                    <a href="modul1.html" class="btn btn-primary">Modul starten</a>
+                    <span class="module-status" id="status-1">Nicht begonnen</span>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="2">
+                <div class="module-number">2</div>
+                <div class="module-content">
+                    <h4>Wo finde ich eine Wohnung?</h4>
+                    <p>Die Suche beginnt! Aber wo schaut man eigentlich?</p>
+                    <ul class="module-topics">
+                        <li>Wichtige Plattformen kennenlernen</li>
+                        <li>Wohnungsinserate verstehen</li>
+                        <li>Selbst eine Wohnung suchen</li>
+                    </ul>
+                    <a href="modul2.html" class="btn btn-secondary">Modul starten</a>
+                    <span class="module-status" id="status-2">Nicht begonnen</span>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="3">
+                <div class="module-number">3</div>
+                <div class="module-content">
+                    <h4>Was steht im Mietvertrag?</h4>
+                    <p>Leandro hat eine Wohnung gefunden! Welche Rechte und Pflichten hat er?</p>
+                    <ul class="module-topics">
+                        <li>Pflichten des Mieters</li>
+                        <li>Pflichten des Vermieters</li>
+                        <li>Wichtige Klauseln verstehen</li>
+                    </ul>
+                    <a href="modul3.html" class="btn btn-secondary">Modul starten</a>
+                    <span class="module-status" id="status-3">Nicht begonnen</span>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="4">
+                <div class="module-number">4</div>
+                <div class="module-content">
+                    <h4>Was muss ich beim Einzug beachten?</h4>
+                    <p>Der grosse Tag! Welche Dokumente und Fotos sind wichtig?</p>
+                    <ul class="module-topics">
+                        <li>Wohnungsübergabe-Protokoll</li>
+                        <li>Fotos und Dokumentation</li>
+                        <li>Checkliste für den Einzug</li>
+                    </ul>
+                    <a href="modul4.html" class="btn btn-secondary">Modul starten</a>
+                    <span class="module-status" id="status-4">Nicht begonnen</span>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="5">
+                <div class="module-number">5</div>
+                <div class="module-content">
+                    <h4>Wie kündige ich richtig?</h4>
+                    <p>Nach 2 Jahren zieht Leandro weiter. Welche Fristen und Formalitäten gibt es?</p>
+                    <ul class="module-topics">
+                        <li>Kündigungsfristen und -termine</li>
+                        <li>Gültiges Kündigungsschreiben</li>
+                        <li>Nachmieter – was bedeutet das?</li>
+                    </ul>
+                    <a href="modul5.html" class="btn btn-secondary">Modul starten</a>
+                    <span class="module-status" id="status-5">Nicht begonnen</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leistungsüberprüfung -->
+        <section class="assessment-info">
+            <h3>Leistungsüberprüfung</h3>
+            <div class="assessment-card">
+                <h4>Teil A: Quiz</h4>
+                <p>Nach Modul 3 oder 4 – ca. 15-20 Fragen zu den bisherigen Modulen</p>
+            </div>
+            <div class="assessment-card">
+                <h4>Teil B: Kündigungsschreiben</h4>
+                <p>Praktische Aufgabe – ein korrektes Kündigungsschreiben verfassen</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 – Lernpfad "Meine erste Wohnung" für EBA-Lernende</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
