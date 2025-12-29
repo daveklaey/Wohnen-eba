@@ -439,14 +439,20 @@ function prepareOptimization(deficit) {
         const canReduce = item.amount > item.min;
         const canDelete = item.min === 0;
         
+        let categoryIcon = '💰';
+        if (item.category === 'fixed') categoryIcon = '🏠';
+        if (item.category === 'variable') categoryIcon = '🛒';
+        if (item.category === 'savings') categoryIcon = '💎';
+        
         itemDiv.innerHTML = `
             <div class="item-info">
-                <span class="item-name">${item.name}</span>
-                <span class="item-hint">Aktuell: CHF ${item.amount} ${canReduce ? `(Min: CHF ${item.min})` : ''}</span>
+                <span class="item-name">${categoryIcon} ${item.name}</span>
+                <span class="item-hint">Aktuell: CHF ${item.amount}${canReduce ? ` • Minimum: CHF ${item.min}` : ' • Nicht anpassbar'}</span>
             </div>
             <div class="item-controls">
-                ${canReduce ? `<input type="number" value="${item.amount}" min="${item.min}" max="${item.amount}" step="10" onchange="updateItemAmount(${index}, this.value)">` : ''}
-                ${canDelete ? `<button onclick="removeItem(${index})">Entfernen</button>` : ''}
+                ${canReduce ? `<input type="number" value="${item.amount}" min="${item.min}" max="${item.amount}" step="10" onchange="updateItemAmount(${index}, this.value)" placeholder="CHF ${item.min}">` : ''}
+                ${canDelete ? `<button onclick="removeItem(${index})">🗑️ Entfernen</button>` : ''}
+                ${!canReduce && !canDelete ? `<span style="color: var(--gray); font-style: italic;">Nicht änderbar</span>` : ''}
             </div>
         `;
         
