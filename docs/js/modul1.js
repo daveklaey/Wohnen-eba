@@ -120,21 +120,22 @@ function createBudget() {
                 { name: 'Lohn (netto)', amount: 3750, category: 'income' }
             ],
             fixed: [
-                { name: 'Miete', amount: 1400, category: 'fixed', adjustable: true, min: 1200 },
+                { name: 'Miete', amount: 1250, category: 'fixed', adjustable: true, min: 1200 },
                 { name: 'Krankenkasse', amount: 350, category: 'fixed' },
                 { name: 'Handy-Abo', amount: 35, category: 'fixed' },
-                { name: 'Internet', amount: 50, category: 'fixed' },
-                { name: 'Strom/Heizung (akonto)', amount: 100, category: 'fixed' }
+                { name: 'Internet-Abo', amount: 50, category: 'fixed' },
+                { name: 'Strom/Heizung (akonto)', amount: 150, category: 'fixed' },
+                { name: 'Transport (ÖV)', amount: 200, category: 'fixed' }
             ],
             variable: [
                 { name: 'Lebensmittel', amount: 500, category: 'variable', adjustable: true, min: 350 },
-                { name: 'Ausgang', amount: 130, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Kleider/Schuhe', amount: 90, category: 'variable', adjustable: true, min: 30 },
+                { name: 'Haushaltsartikel', amount: 200, category: 'variable', adjustable: true, min: 100 },
+                { name: 'Ausgang', amount: 200, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Kleider/Schuhe', amount: 150, category: 'variable', adjustable: true, min: 30 },
                 { name: 'Streaming-Dienste', amount: 25, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Hobbys', amount: 90, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Essen auswärts', amount: 110, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Transport (ÖV)', amount: 100, category: 'variable', adjustable: true, min: 80 },
-                { name: 'Beauty/Barber', amount: 50, category: 'variable', adjustable: true, min: 0 }
+                { name: 'Hobbys', amount: 200, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Essen auswärts', amount: 250, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Beauty/Barber', amount: 100, category: 'variable', adjustable: true, min: 0 }
             ],
             savings: [
                 { name: getGoalName(questionnaireData.q10), amount: 270, category: 'savings', adjustable: true, min: 100 }
@@ -148,22 +149,23 @@ function createBudget() {
                 { name: 'Lohn (netto)', amount: 3750, category: 'income' }
             ],
             fixed: [
-                { name: 'Miete', amount: 1400, category: 'fixed', adjustable: true, min: 1200 },
+                { name: 'Miete', amount: 1350, category: 'fixed', adjustable: true, min: 1200 },
                 { name: 'Krankenkasse', amount: 350, category: 'fixed' },
                 { name: 'Handy-Abo', amount: 55, category: 'fixed' },
-                { name: 'Internet', amount: 50, category: 'fixed' },
-                { name: 'Strom/Heizung (akonto)', amount: 100, category: 'fixed' }
+                { name: 'Internet', amount: 60, category: 'fixed' },
+                { name: 'Strom/Heizung (akonto)', amount: 150, category: 'fixed' },
+                { name: 'Transport (ÖV)', amount: 200, category: 'fixed' }
             ],
             variable: [
-                { name: 'Lebensmittel', amount: 550, category: 'variable', adjustable: true, min: 350 },
+                { name: 'Lebensmittel', amount: 500, category: 'variable', adjustable: true, min: 350 },
+                { name: 'Haushaltsartikel', amount: 200, category: 'variable', adjustable: true, min: 100 },
                 { name: 'Ausgang', amount: 220, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Kleider/Schuhe', amount: 150, category: 'variable', adjustable: true, min: 30 },
-                { name: 'Streaming-Dienste', amount: 40, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Hobbys', amount: 130, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Essen auswärts', amount: 180, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Kleider/Schuhe', amount: 180, category: 'variable', adjustable: true, min: 30 },
+                { name: 'Streaming-Dienste', amount: 35, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Hobbys', amount: 210, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Essen auswärts', amount: 250, category: 'variable', adjustable: true, min: 0 },
                 { name: 'Rauchen/Vapes', amount: 130, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Transport (ÖV)', amount: 130, category: 'variable', adjustable: true, min: 80 },
-                { name: 'Beauty/Barber', amount: 70, category: 'variable', adjustable: true, min: 0 }
+                { name: 'Beauty/Barber', amount: 100, category: 'variable', adjustable: true, min: 0 }
             ],
             savings: [
                 { name: getGoalName(questionnaireData.q10), amount: 345, category: 'savings', adjustable: true, min: 100 }
@@ -180,20 +182,21 @@ function createBudget() {
                 { name: 'Miete', amount: 1400, category: 'fixed', adjustable: true, min: 1200 },
                 { name: 'Krankenkasse', amount: 350, category: 'fixed' },
                 { name: 'Handy-Abo', amount: 80, category: 'fixed' },
-                { name: 'Internet', amount: 50, category: 'fixed' },
-                { name: 'Strom/Heizung (akonto)', amount: 100, category: 'fixed' },
+                { name: 'Internet', amount: 60, category: 'fixed' },
+                { name: 'Strom/Heizung (akonto)', amount: 150, category: 'fixed' },
+                { name: 'Transportkosten (Auto)', amount: 350, category: 'fixed' },
                 { name: 'Fitness-Abo', amount: 90, category: 'fixed', adjustable: true, min: 0 }
             ],
             variable: [
                 { name: 'Lebensmittel', amount: 550, category: 'variable', adjustable: true, min: 300 },
+                { name: 'Haushaltsartikel', amount: 200, category: 'variable', adjustable: true, min: 100 },
                 { name: 'Ausgang', amount: 280, category: 'variable', adjustable: true, min: 0 },
                 { name: 'Kleider/Schuhe', amount: 220, category: 'variable', adjustable: true, min: 20 },
-                { name: 'Streaming-Dienste', amount: 60, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Hobbys/Gaming', amount: 140, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Essen auswärts', amount: 230, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Rauchen/Vapes', amount: 140, category: 'variable', adjustable: true, min: 0 },
-                { name: 'Transport (Auto)', amount: 320, category: 'variable', adjustable: true, min: 80 },
-                { name: 'Beauty/Barber', amount: 90, category: 'variable', adjustable: true, min: 0 }
+                { name: 'Streaming-Dienste', amount: 50, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Hobbys/Gaming', amount: 210, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Essen auswärts', amount: 250, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Rauchen/Vapes', amount: 200, category: 'variable', adjustable: true, min: 0 },
+                { name: 'Beauty/Barber', amount: 120, category: 'variable', adjustable: true, min: 0 }
             ],
             savings: [
                 { name: getGoalName(questionnaireData.q10), amount: 370, category: 'savings', adjustable: true, min: 50 }
