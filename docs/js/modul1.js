@@ -211,7 +211,7 @@ function getGoalName(value) {
     const goals = {
         1: 'Notfall-Reserve',
         2: 'Ferien/Reisen',
-        3: 'Auto/Führerschein'
+        3: 'Auto/Motorrad'
     };
     return goals[value] || 'Sparen';
 }
@@ -409,6 +409,24 @@ function checkBudget() {
 function prepareOptimization(deficit) {
     document.getElementById('deficitMessage').textContent = 
         `Dein Budget hat ein Defizit von CHF ${deficit}. Das bedeutet: Am Ende des Monats fehlen dir CHF ${deficit}. So machst du jeden Monat Schulden!`;
+    
+    // Dynamische Tipps basierend auf Budget-Typ
+    const currentRent = currentBudget.fixed.find(item => item.name === 'Miete').amount;
+    const rentSavings = currentRent - 1200;
+    document.getElementById('housingTip').textContent = 
+        `Statt CHF ${currentRent.toLocaleString('de-CH')} eine Wohnung für CHF 1'200 suchen – spart CHF ${rentSavings}!`;
+    
+    // Sparziel Text anpassen
+    const goalName = currentBudget.savings[0].name;
+    let savingsTipText = 'Für Notfälle brauchst du Rückstellungen – aber vielleicht kannst du ';
+    if (goalName === 'Auto/Motorrad') {
+        savingsTipText += 'das Auto noch etwas warten?';
+    } else if (goalName === 'Ferien/Reisen') {
+        savingsTipText += 'die Ferien aufschieben?';
+    } else {
+        savingsTipText += 'vorerst weniger zur Seite legen?';
+    }
+    document.getElementById('savingsTip').textContent = savingsTipText;
     
     const zone = document.getElementById('optimizationZone');
     zone.innerHTML = '';
