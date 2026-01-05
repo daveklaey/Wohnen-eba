@@ -272,7 +272,7 @@
                         </label>
                         <label class="radio-card">
                             <input type="radio" name="q10" value="3">
-                            <span>Für etwas Grösseres sparen (Auto, Wohnung, etc.)</span>
+                            <span>Für etwas Grösseres sparen (Auto, Motorrad etc.)</span>
                         </label>
                     </div>
                 </div>
@@ -364,7 +364,7 @@
                     </div>
 
                     <div class="category-fancy">
-                        <h3>🛒 Variable Kosten</h3>
+                        <h3>🛒 Variabel (veränderbar)</h3>
                         <div class="drop-zone-fancy" id="variable-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
                             <p style="color: var(--gray); text-align: center; padding: 2rem;">Ziehe variable Kosten hierher</p>
                         </div>
@@ -441,12 +441,12 @@
                     <div class="tip-card">
                         <div class="tip-icon">🏠</div>
                         <h4>Günstigere Wohnung</h4>
-                        <p>Statt CHF 1'400 eine Wohnung für CHF 1'200 suchen – spart CHF 200!</p>
+                        <p id="housingTip"><!-- Wird dynamisch gefüllt --></p>
                     </div>
                     <div class="tip-card">
                         <div class="tip-icon">💎</div>
                         <h4>Weniger sparen</h4>
-                        <p>Für Notfälle brauchst du Rückstellungen – aber vielleicht kannst du die Ferien aufschieben?</p>
+                        <p id="savingsTip"><!-- Wird dynamisch gefüllt --></p>
                     </div>
                 </div>
             </div>
@@ -520,7 +520,7 @@
                     <div class="question-card">
                         <h4><span class="question-number">2</span> Was sind "variable Kosten"?</h4>
                         <label class="radio-card"><input type="radio" name="quiz2" value="wrong"> Kosten, die jeden Monat gleich sind</label>
-                        <label class="radio-card"><input type="radio" name="quiz2" value="correct"> Kosten, die du beeinflussen kannst</label>
+                        <label class="radio-card"><input type="radio" name="quiz2" value="correct"> Veränderbare Kosten</label>
                         <label class="radio-card"><input type="radio" name="quiz2" value="wrong"> Kosten für die Wohnung</label>
                     </div>
 
