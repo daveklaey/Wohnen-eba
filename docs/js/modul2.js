@@ -54,16 +54,56 @@ function downloadNotes() {
         return;
     }
     
-    // Erstelle Textdatei
-    const blob = new Blob([notes], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'meine-notizen-fake-inserate.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    // Erstelle Word-Dokument mit docx.js
+    const doc = new docx.Document({
+        sections: [{
+            properties: {},
+            children: [
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "Meine Notizen: Fake-Inserate erkennen",
+                            bold: true,
+                            size: 32,
+                            color: "667eea"
+                        })
+                    ],
+                    spacing: { after: 400 }
+                }),
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "Modul 2 - Meine erste Wohnung",
+                            italics: true,
+                            size: 24,
+                            color: "666666"
+                        })
+                    ],
+                    spacing: { after: 600 }
+                }),
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: notes,
+                            size: 24
+                        })
+                    ]
+                })
+            ]
+        }]
+    });
+    
+    // Download
+    docx.Packer.toBlob(doc).then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'meine-notizen-fake-inserate.docx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
 }
 
 // Notizen beim Laden wiederherstellen
@@ -185,119 +225,271 @@ function displaySummary() {
 }
 
 function downloadApartmentPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
-    // Titel
-    doc.setFontSize(22);
-    doc.setFont(undefined, 'bold');
-    doc.text('Wohnungsanalyse', 20, 20);
-    
-    // Datum
-    doc.setFontSize(10);
-    doc.setFont(undefined, 'normal');
     const date = new Date().toLocaleDateString('de-CH');
-    doc.text(`Erstellt am: ${date}`, 20, 28);
     
-    let y = 40;
+    // Vorteile und Nachteile als Aufzählungen formatieren
+    const prosArray = apartmentData.pros.split('\n').filter(line => line.trim().length > 0)
+        .map(pro => pro.replace(/^[-•*]\s*/, '').trim());
+    const consArray = apartmentData.cons.split('\n').filter(line => line.trim().length > 0)
+        .map(con => con.replace(/^[-•*]\s*/, '').trim());
     
-    // Grunddaten
-    doc.setFontSize(16);
-    doc.setFont(undefined, 'bold');
-    doc.text('Grunddaten', 20, y);
-    
-    y += 8;
-    doc.setFontSize(11);
-    doc.setFont(undefined, 'normal');
-    doc.text(`Adresse: ${apartmentData.address}`, 20, y);
-    y += 6;
-    doc.text(`Zimmer: ${apartmentData.rooms}`, 20, y);
-    y += 6;
-    doc.text(`Grosse: ${apartmentData.size} m²`, 20, y);
-    y += 6;
-    doc.text(`Verfugbar ab: ${apartmentData.available}`, 20, y);
-    
-    // Kosten
-    y += 12;
-    doc.setFontSize(16);
-    doc.setFont(undefined, 'bold');
-    doc.text('Kosten', 20, y);
-    
-    y += 8;
-    doc.setFontSize(11);
-    doc.setFont(undefined, 'normal');
-    doc.text(`Nettomiete: CHF ${apartmentData.rent}`, 20, y);
-    y += 6;
-    doc.text(`Nebenkosten: CHF ${apartmentData.extra}`, 20, y);
-    y += 6;
-    doc.setFont(undefined, 'bold');
-    doc.text(`Bruttomiete: CHF ${apartmentData.rent + apartmentData.extra}`, 20, y);
-    
-    // Begründung
-    y += 12;
-    doc.setFontSize(16);
-    doc.setFont(undefined, 'bold');
-    doc.text('Warum diese Wohnung?', 20, y);
-    
-    y += 8;
-    doc.setFontSize(11);
-    doc.setFont(undefined, 'normal');
-    const whyLines = doc.splitTextToSize(apartmentData.why, 170);
-    doc.text(whyLines, 20, y);
-    y += whyLines.length * 6 + 6;
-    
-    // Neue Seite wenn nötig
-    if (y > 250) {
-        doc.addPage();
-        y = 20;
-    }
-    
-    // Vorteile
-    doc.setFontSize(16);
-    doc.setFont(undefined, 'bold');
-    doc.text('Vorteile', 20, y);
-    
-    y += 8;
-    doc.setFontSize(11);
-    doc.setFont(undefined, 'normal');
-    const prosList = apartmentData.pros.split('\n').filter(line => line.trim().length > 0);
-    prosList.forEach(pro => {
-        const cleanPro = pro.replace(/^[-•*]\s*/, '');
-        doc.text(`• ${cleanPro}`, 25, y);
-        y += 6;
+    // Word-Dokument erstellen
+    const doc = new docx.Document({
+        sections: [{
+            properties: {
+                page: {
+                    margin: {
+                        top: 1440,
+                        right: 1440,
+                        bottom: 1440,
+                        left: 1440
+                    }
+                }
+            },
+            children: [
+                // Titel
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "🏠 Meine Wohnungsanalyse",
+                            bold: true,
+                            size: 36,
+                            color: "667eea"
+                        })
+                    ],
+                    spacing: { after: 200 }
+                }),
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: `Erstellt am: ${date}`,
+                            italics: true,
+                            size: 20,
+                            color: "666666"
+                        })
+                    ],
+                    spacing: { after: 600 }
+                }),
+                
+                // Grunddaten Section
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "📋 Grunddaten",
+                            bold: true,
+                            size: 28,
+                            color: "667eea"
+                        })
+                    ],
+                    spacing: { before: 400, after: 300 }
+                }),
+                new docx.Table({
+                    rows: [
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Adresse:", bold: true })],
+                                    shading: { fill: "f5f7fa" },
+                                    width: { size: 30, type: docx.WidthType.PERCENTAGE }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph(apartmentData.address)],
+                                    width: { size: 70, type: docx.WidthType.PERCENTAGE }
+                                })
+                            ]
+                        }),
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Zimmer:", bold: true })],
+                                    shading: { fill: "f5f7fa" }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph(apartmentData.rooms)]
+                                })
+                            ]
+                        }),
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Grösse:", bold: true })],
+                                    shading: { fill: "f5f7fa" }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph(`${apartmentData.size} m²`)]
+                                })
+                            ]
+                        }),
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Verfügbar ab:", bold: true })],
+                                    shading: { fill: "f5f7fa" }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph(apartmentData.available)]
+                                })
+                            ]
+                        })
+                    ],
+                    width: { size: 100, type: docx.WidthType.PERCENTAGE }
+                }),
+                
+                // Kosten Section
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "💰 Kosten",
+                            bold: true,
+                            size: 28,
+                            color: "667eea"
+                        })
+                    ],
+                    spacing: { before: 600, after: 300 }
+                }),
+                new docx.Table({
+                    rows: [
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Nettomiete:", bold: true })],
+                                    shading: { fill: "f5f7fa" }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph(`CHF ${apartmentData.rent}`)]
+                                })
+                            ]
+                        }),
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Nebenkosten:", bold: true })],
+                                    shading: { fill: "f5f7fa" }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph(`CHF ${apartmentData.extra}`)]
+                                })
+                            ]
+                        }),
+                        new docx.TableRow({
+                            children: [
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({ text: "Bruttomiete:", bold: true })],
+                                    shading: { fill: "d1fae5" }
+                                }),
+                                new docx.TableCell({
+                                    children: [new docx.Paragraph({
+                                        text: `CHF ${parseInt(apartmentData.rent) + parseInt(apartmentData.extra)}`,
+                                        bold: true
+                                    })],
+                                    shading: { fill: "d1fae5" }
+                                })
+                            ]
+                        })
+                    ],
+                    width: { size: 100, type: docx.WidthType.PERCENTAGE }
+                }),
+                
+                // Begründung
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "💭 Warum diese Wohnung?",
+                            bold: true,
+                            size: 28,
+                            color: "667eea"
+                        })
+                    ],
+                    spacing: { before: 600, after: 300 }
+                }),
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: apartmentData.why,
+                            size: 24
+                        })
+                    ],
+                    spacing: { after: 400 }
+                }),
+                
+                // Vorteile
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "✅ Vorteile",
+                            bold: true,
+                            size: 28,
+                            color: "10b981"
+                        })
+                    ],
+                    spacing: { before: 600, after: 300 }
+                }),
+                ...prosArray.map(pro => new docx.Paragraph({
+                    text: pro,
+                    bullet: { level: 0 },
+                    spacing: { after: 120 }
+                })),
+                
+                // Nachteile
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "❌ Nachteile",
+                            bold: true,
+                            size: 28,
+                            color: "ef4444"
+                        })
+                    ],
+                    spacing: { before: 600, after: 300 }
+                }),
+                ...consArray.map(con => new docx.Paragraph({
+                    text: con,
+                    bullet: { level: 0 },
+                    spacing: { after: 120 }
+                })),
+                
+                // Link
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: "🔗 Link zum Inserat",
+                            bold: true,
+                            size: 24,
+                            color: "667eea"
+                        })
+                    ],
+                    spacing: { before: 600, after: 200 }
+                }),
+                new docx.Paragraph({
+                    children: [
+                        new docx.TextRun({
+                            text: apartmentData.link,
+                            size: 20,
+                            color: "667eea",
+                            underline: {}
+                        })
+                    ]
+                })
+            ]
+        }]
     });
     
-    // Nachteile
-    y += 6;
-    doc.setFontSize(16);
-    doc.setFont(undefined, 'bold');
-    doc.text('Nachteile', 20, y);
-    
-    y += 8;
-    doc.setFontSize(11);
-    doc.setFont(undefined, 'normal');
-    const consList = apartmentData.cons.split('\n').filter(line => line.trim().length > 0);
-    consList.forEach(con => {
-        const cleanCon = con.replace(/^[-•*]\s*/, '');
-        doc.text(`• ${cleanCon}`, 25, y);
-        y += 6;
+    // Download
+    docx.Packer.toBlob(doc).then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'wohnungsanalyse.docx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     });
-    
-    // Link
-    y += 10;
-    doc.setFontSize(9);
-    doc.setTextColor(100, 100, 100);
-    doc.text(`Link: ${apartmentData.link}`, 20, y);
-    
-    // PDF speichern
-    doc.save('wohnungsanalyse.pdf');
 }
 
-function completeModule() {
-    // Modul als abgeschlossen markieren
-    if (typeof completeModule === 'function') {
-        completeModule(2);
-    }
+function finishModule() {
+    // Modul als abgeschlossen markieren (Funktion aus main.js)
+    completeModule(2);
     
     // Zurück zur Übersicht
     if (confirm('Modul 2 abschliessen und zur Übersicht zurückkehren?')) {
